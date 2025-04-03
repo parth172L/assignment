@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+        header {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .marquee {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+        }
+        .subject {
+            background: #007bff;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.4s ease-in-out;
+        }
+        .subject:hover {
+            background: #6610f2;
+            transform: scale(1.05);
+        }
+        .assignments {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .assignments.show {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .assignment {
+            background: #f4f4f4;
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease-in-out;
+        }
+        .assignment:hover {
+            transform: translateX(10px);
+            background: #e2e6ea;
+        }
+        .assignment p {
+            margin: 0;
+            font-size: 18px;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            background: #28a745;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+        a:hover {
+            background: #218838;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            margin-top: 20px;
+            padding: 15px;
+            background: #343a40;
+            color: white;
+            font-size: 16px;
+            border-radius: 0 0 10px 10px;
+        }
+    </style>
+    <script>
+        function toggleAssignments(id) {
+            var assignments = document.getElementById(id);
+            if (assignments.classList.contains("show")) {
+                assignments.classList.remove("show");
+            } else {
+                assignments.classList.add("show");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <span class="marquee">🚀 Welcome to Assignments Portal 🚀</span>
+    </header>
+    <div class="container">
+        <h1>📚 Subjects 📚</h1>
+        <div class="subject" onclick="toggleAssignments('1 Advance Python')">1 Advance Python</div>
+        <div id="1 Advance Python" class="assignments">
+            <!--<div class="assignment">
+                <p>Assignment 1</p>
+                <a href="#" target="_blank">Download</a>
+            </div>-->
+        </div>
+        
+        <div class="subject" onclick="toggleAssignments('2 Advance Web Development')">2 Advance Web Development</div>
+        <div id="2 Advance Web Development" class="assignments">
+            <div class="assignment">
+                <p>Assignment 1</p>
+                <a href="https://drive.google.com/file/d/12XICBqP3V3fwCO3j9QI9KJ6A88k6T_SO/view?usp=drive_link" target="_blank">Download</a>
+                <p>Assignment 2</p>
+                <a href="https://drive.google.com/file/d/11xQhZCTNgloF5b1Bgha0B1lDL7yxqTT5/view?usp=drive_link" target="_blank">Download</a>
+            </div>
+        </div>
+    
+        <div class="subject" onclick="toggleAssignments('3 Advance Database Management System')">3 Advance Database Management System</div>
+        <div id="3 Advance Database Management System" class="assignments">
+            <div class="assignment">
+                <p>Assignment 1 & 2</p>
+                <a href="https://drive.google.com/file/d/173xvfJRolbfRxHDj2lf7buetnfqaqrG5/view?usp=drive_link" target="_blank">Download</a>
+            </div>
+        </div>
+    
+        <div class="subject" onclick="toggleAssignments('4 Cyber Law & Security')">4 Cyber Law & Security</div>
+        <div id="4 Cyber Law & Security" class="assignments">
+            <!--<div class="assignment">
+                <p>Assignment 1</p>
+                <a href="#" target="_blank">Download</a>
+            </div>-->
+        </div>
+    
+        <div class="subject" onclick="toggleAssignments('5 Emerging Trends & Technologies')">5 Emerging Trends & Technologies</div>
+        <div id="5 Emerging Trends & Technologies" class="assignments">
+            <div class="assignment">
+                <p>Assignment 1</p>
+                <a href="https://drive.google.com/file/d/19WmZA6Sv_z-bN9SB-NcdcaEHiW28Ptux/view?usp=drive_link" target="_blank">Download</a>
+                <p>Assignment 2</p>
+                <a href="https://drive.google.com/file/d/1nT8zyTZreXRmnOUJ434tGk4UD4Tr7jsQ/view?usp=drive_link" target="_blank">Download</a>
+            </div>
+        </div>
+    
+        <div class="subject" onclick="toggleAssignments('6 Management Infomation System')">6 Management Infomation System</div>
+        <div id="6 Management Infomation System" class="assignments">
+            <div class="assignment">
+                <p>Assignment 1</p>
+                <a href="https://drive.google.com/file/d/1C0U9oQyxaF2PmzySBBzqIkXB4_lzlYfN/view?usp=drive_link" target="_blank">Download</a>
+            </div>
+            
+        </div>
+    
+        <div class="subject" onclick="toggleAssignments('7 Digital Marketing')">7 Digital Marketing</div>
+        <div id="7 Digital Marketing" class="assignments">
+            <!--<div class="assignment">
+                <p>Assignment 1</p>
+                <a href="#" target="_blank">Download</a>
+            </div>-->
+        </div>
+
+    </div>
+    <footer>© 2025 Assignments | All rights reserved</footer>
+</body>
+</html>
