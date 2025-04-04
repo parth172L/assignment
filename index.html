@@ -69,10 +69,14 @@
             padding: 12px;
             margin: 5px 0;
             border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: block; /* Change from flex to block */
             transition: all 0.4s ease-in-out;
+            text-align: left; /* Align text properly */
+        }
+
+        .assignment a {
+            display: inline-block; /* Ensure buttons are aligned correctly */
+            margin-top: 5px;
         }
         .assignment:hover {
             transform: translateX(10px);
@@ -134,6 +138,8 @@
             <div class="assignment">
                 <p>Assignment 1</p>
                 <a href="https://drive.google.com/file/d/12XICBqP3V3fwCO3j9QI9KJ6A88k6T_SO/view?usp=drive_link" target="_blank">Download</a>
+            </div>
+            <div class="assignment">
                 <p>Assignment 2</p>
                 <a href="https://drive.google.com/file/d/11xQhZCTNgloF5b1Bgha0B1lDL7yxqTT5/view?usp=drive_link" target="_blank">Download</a>
             </div>
@@ -160,6 +166,8 @@
             <div class="assignment">
                 <p>Assignment 1</p>
                 <a href="https://drive.google.com/file/d/19WmZA6Sv_z-bN9SB-NcdcaEHiW28Ptux/view?usp=drive_link" target="_blank">Download</a>
+            </div>
+            <div class="assignment">
                 <p>Assignment 2</p>
                 <a href="https://drive.google.com/file/d/1nT8zyTZreXRmnOUJ434tGk4UD4Tr7jsQ/view?usp=drive_link" target="_blank">Download</a>
             </div>
