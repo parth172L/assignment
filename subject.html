@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignments</title>
+    <style>
+        body { font-family: Poppins, sans-serif; text-align: center; background: #f0f2f5; }
+        .container { max-width: 800px; margin: 30px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .assignment { margin: 20px 0; padding: 15px; background: #e9ecef; border-radius: 10px; }
+        .assignment p { font-size: 18px; margin-bottom: 10px; }
+        a.btn { margin: 5px; padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 8px; }
+        a.btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="subject-title">Assignments</h1>
+        <div id="assignment-list"></div>
+        <a href="index.html">⬅ Back to Subjects</a>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const subject = urlParams.get('subject');
+        document.getElementById("subject-title").innerText = subject + " Assignments";
+
+        // Sample data
+        const data = {
+            "Advance Python": [
+                { name: "Assignment 1", link: "https://drive.google.com/file/d/1Zpow5253qkKTorMGBUyy_sS-oMrYL_7G/view?usp=sharing" }
+            ],
+            "Advance Web Development": [
+                { name: "Assignment 1", link: "https://drive.google.com/file/d/12XICBqP3V3fwCO3j9QI9KJ6A88k6T_SO/view?usp=drive_link" },
+                { name: "Assignment 2", link: "https://drive.google.com/file/d/11xQhZCTNgloF5b1Bgha0B1lDL7yxqTT5/view?usp=drive_link" }
+            ],
+            "Advance Database Management System": [
+                { name: "Assignment 1 & 2", link: "https://drive.google.com/file/d/173xvfJRolbfRxHDj2lf7buetnfqaqrG5/view?usp=drive_link" }
+            ],
+            "Emerging Trends & Technologies": [
+                { name: "Assignment 1", link: "https://drive.google.com/file/d/19WmZA6Sv_z-bN9SB-NcdcaEHiW28Ptux/view?usp=drive_link" },
+                { name: "Assignment 2", link: "https://drive.google.com/file/d/1nT8zyTZreXRmnOUJ434tGk4UD4Tr7jsQ/view?usp=drive_link" }
+            ],
+            "Management Infomation System": [
+                { name: "Assignment 1", link: "https://drive.google.com/file/d/1SsQqnxFsBTqJ4TAX7vUQImH5O8cYaUsr/view?usp=drive_link" }
+            ]
+        };
+
+        const assignments = data[subject] || [];
+        const container = document.getElementById("assignment-list");
+
+        if (assignments.length === 0) {
+            container.innerHTML = "<p>No assignments uploaded yet.</p>";
+        } else {
+            assignments.forEach(ass => {
+                container.innerHTML += `
+                    <div class="assignment">
+                        <p>${ass.name}</p>
+                        <a class="btn" href="${ass.link}" target="_blank">View</a>
+                        <a class="btn" href="${ass.link}" download>Download</a>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
