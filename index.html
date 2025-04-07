@@ -41,6 +41,7 @@
             color: #333;
         }
         .subject {
+            display: block;
             background: #007bff;
             color: white;
             padding: 12px;
@@ -49,55 +50,11 @@
             cursor: pointer;
             font-size: 20px;
             transition: all 0.4s ease-in-out;
+            text-decoration: none;
         }
         .subject:hover {
             background: #6610f2;
             transform: scale(1.05);
-        }
-        .assignments {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out, opacity 0.5s ease-in-out;
-            opacity: 0;
-        }
-        .assignments.show {
-            max-height: 500px;
-            opacity: 1;
-        }
-        .assignment {
-            background: #f4f4f4;
-            padding: 12px;
-            margin: 5px 0;
-            border-radius: 8px;
-            display: block; /* Change from flex to block */
-            transition: all 0.4s ease-in-out;
-            text-align: left; /* Align text properly */
-        }
-
-        .assignment a {
-            display: inline-block; /* Ensure buttons are aligned correctly */
-            margin-top: 5px;
-        }
-        .assignment:hover {
-            transform: translateX(10px);
-            background: #e2e6ea;
-        }
-        .assignment p {
-            margin: 0;
-            font-size: 18px;
-        }
-        a {
-            text-decoration: none;
-            color: white;
-            background: #28a745;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s ease-in-out;
-        }
-        a:hover {
-            background: #218838;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         footer {
             margin-top: 20px;
@@ -108,16 +65,6 @@
             border-radius: 0 0 10px 10px;
         }
     </style>
-    <script>
-        function toggleAssignments(id) {
-            var assignments = document.getElementById(id);
-            if (assignments.classList.contains("show")) {
-                assignments.classList.remove("show");
-            } else {
-                assignments.classList.add("show");
-            }
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -125,71 +72,13 @@
     </header>
     <div class="container">
         <h1>📚 Subjects 📚</h1>
-        <div class="subject" onclick="toggleAssignments('1 Advance Python')">1 Advance Python</div>
-        <div id="1 Advance Python" class="assignments">
-             <div class="assignment">
-                <p>Assignment 1</p>
-                <a href="https://drive.google.com/file/d/1Zpow5253qkKTorMGBUyy_sS-oMrYL_7G/view?usp=sharing" target="_blank">Download</a>
-            </div>
-        </div>
-        
-        <div class="subject" onclick="toggleAssignments('2 Advance Web Development')">2 Advance Web Development</div>
-        <div id="2 Advance Web Development" class="assignments">
-            <div class="assignment">
-                <p>Assignment 1</p>
-                <a href="https://drive.google.com/file/d/12XICBqP3V3fwCO3j9QI9KJ6A88k6T_SO/view?usp=drive_link" target="_blank">Download</a>
-            </div>
-            <div class="assignment">
-                <p>Assignment 2</p>
-                <a href="https://drive.google.com/file/d/11xQhZCTNgloF5b1Bgha0B1lDL7yxqTT5/view?usp=drive_link" target="_blank">Download</a>
-            </div>
-        </div>
-    
-        <div class="subject" onclick="toggleAssignments('3 Advance Database Management System')">3 Advance Database Management System</div>
-        <div id="3 Advance Database Management System" class="assignments">
-            <div class="assignment">
-                <p>Assignment 1 & 2</p>
-                <a href="https://drive.google.com/file/d/173xvfJRolbfRxHDj2lf7buetnfqaqrG5/view?usp=drive_link" target="_blank">Download</a>
-            </div>
-        </div>
-    
-        <div class="subject" onclick="toggleAssignments('4 Cyber Law & Security')">4 Cyber Law & Security</div>
-        <div id="4 Cyber Law & Security" class="assignments">
-            <!--<div class="assignment">
-                <p>Assignment 1</p>
-                <a href="#" target="_blank">Download</a>
-            </div>-->
-        </div>
-    
-        <div class="subject" onclick="toggleAssignments('5 Emerging Trends & Technologies')">5 Emerging Trends & Technologies</div>
-        <div id="5 Emerging Trends & Technologies" class="assignments">
-            <div class="assignment">
-                <p>Assignment 1</p>
-                <a href="https://drive.google.com/file/d/19WmZA6Sv_z-bN9SB-NcdcaEHiW28Ptux/view?usp=drive_link" target="_blank">Download</a>
-            </div>
-            <div class="assignment">
-                <p>Assignment 2</p>
-                <a href="https://drive.google.com/file/d/1nT8zyTZreXRmnOUJ434tGk4UD4Tr7jsQ/view?usp=drive_link" target="_blank">Download</a>
-            </div>
-        </div>
-    
-        <div class="subject" onclick="toggleAssignments('6 Management Infomation System')">6 Management Infomation System</div>
-        <div id="6 Management Infomation System" class="assignments">
-            <div class="assignment">
-                <p>Assignment 1</p>
-                <a href="https://drive.google.com/file/d/1SsQqnxFsBTqJ4TAX7vUQImH5O8cYaUsr/view?usp=drive_link" target="_blank">Download</a>
-            </div>
-            
-        </div>
-    
-        <div class="subject" onclick="toggleAssignments('7 Digital Marketing')">7 Digital Marketing</div>
-        <div id="7 Digital Marketing" class="assignments">
-            <!--<div class="assignment">
-                <p>Assignment 1</p>
-                <a href="#" target="_blank">Download</a>
-            </div>-->
-        </div>
-
+        <a class="subject" href="subject.html?subject=Advance Python">1 Advance Python</a>
+        <a class="subject" href="subject.html?subject=Advance Web Development">2 Advance Web Development</a>
+        <a class="subject" href="subject.html?subject=Advance Database Management System">3 Advance Database Management System</a>
+        <a class="subject" href="subject.html?subject=Cyber Law & Security">4 Cyber Law & Security</a>
+        <a class="subject" href="subject.html?subject=Emerging Trends & Technologies">5 Emerging Trends & Technologies</a>
+        <a class="subject" href="subject.html?subject=Management Infomation System">6 Management Infomation System</a>
+        <a class="subject" href="subject.html?subject=Digital Marketing">7 Digital Marketing</a>
     </div>
     <footer>© 2025 Assignments | All rights reserved</footer>
 </body>
