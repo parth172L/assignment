@@ -1,72 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Assignments</title>
-    <style>
-        body { font-family: Poppins, sans-serif; text-align: center; background: #f0f2f5; }
-        .container { max-width: 800px; margin: 30px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .assignment { margin: 20px 0; padding: 15px; background: #e9ecef; border-radius: 10px; }
-        .assignment p { font-size: 18px; margin-bottom: 10px; }
-        a.btn { margin: 5px; padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 8px; }
-        a.btn:hover { background: #0056b3; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Assignments</title>
+  <style>
+    body {
+      font-family: Poppins, sans-serif;
+      text-align: center;
+      background: #f0f2f5;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: slideUp 1s ease-out;
+    }
+
+    h1 {
+      color: #333;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .assignment {
+      margin: 20px 0;
+      padding: 15px;
+      background: #e9ecef;
+      border-radius: 10px;
+      animation: slideLeft 0.6s ease-in-out;
+    }
+
+    .assignment p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    a.btn {
+      margin: 5px;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    a.btn:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+
+    a[href="index.html"] {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1 id="subject-title">Assignments</h1>
-        <div id="assignment-list"></div>
-        <a href="index.html">⬅ Back to Subjects</a>
-    </div>
+  <div class="container">
+    <h1 id="subject-title">Assignments</h1>
+    <div id="assignment-list"></div>
+    <a href="index.html">⬅ Back to Subjects</a>
+  </div>
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const subject = urlParams.get('subject');
-        document.getElementById("subject-title").innerText = subject + " Assignments";
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const subject = urlParams.get('subject');
+    document.getElementById("subject-title").innerText = subject + " Assignments";
 
-        const data = {
-            "Advance Python": [
-                { name: "Assignment 1", link: "https://drive.google.com/file/d/1Zpow5253qkKTorMGBUyy_sS-oMrYL_7G/view?usp=drive_link" }
-            ],
-            "Advance Web Development": [
-                { name: "Assignment 1", link: "https://drive.google.com/file/d/12XICBqP3V3fwCO3j9QI9KJ6A88k6T_SO/view?usp=drive_link" },
-                { name: "Assignment 2", link: "https://drive.google.com/file/d/11xQhZCTNgloF5b1Bgha0B1lDL7yxqTT5/view?usp=drive_link" }
-            ],
-            "Advance Database Management System": [
-                { name: "Assignment 1 & 2", link: "https://drive.google.com/file/d/173xvfJRolbfRxHDj2lf7buetnfqaqrG5/view?usp=drive_link" },
-                { name: "Assignment 3", link: "https://drive.google.com/file/d/1Jjqo-kjTDs0PsxCmGGbftfeVG4f1ld-T/view?usp=drive_link" },
-                { name: "Assignment 4", link: "https://drive.google.com/file/d/135xObZ_SczzsnPMD3nYyEVFw5aCrtJgS/view?usp=drive_link" }
-            ],
-            "Emerging Trends & Technologies": [
-                { name: "Assignment 1", link: "https://drive.google.com/file/d/15SCRCdv_FEBeLI5DMCctPy9rTybQjNrg/view?usp=drive_link" },
-                { name: "Assignment 2", link: "https://drive.google.com/file/d/1DejMs5Yhmjw36l8k6fR4UkDwTsl0Byq4/view?usp=drive_link" },
-                { name: "Assignment 3", link: "https://drive.google.com/file/d/1AIuGF7CMS5nRi5MEjZi0BO7HKjGpeRTS/view?usp=drive_link" },
-                { name: "Assignment 4", link: "https://drive.google.com/file/d/1fNtdnwROTLoEiYk1yBLeroDnn4LAlSc2/view?usp=drive_link" }
-            ],
-            "Management Infomation System": [
-                { name: "Assignment 1", link: "https://drive.google.com/file/d/1SsQqnxFsBTqJ4TAX7vUQImH5O8cYaUsr/view?usp=drive_link" }
-            ],
-            "Digital Marketing": [
-                { name: "Assignment 1 & 2", link: "https://drive.google.com/file/d/1fTSM7zOVaO3OrTazP_4JccpOfn4GsM8F/view?usp=drive_link" }
-            ]
-        };
+    const data = {
+      "Advance Python": [
+        { name: "Assignment 1", link: "https://drive.google.com/file/d/1Zpow5253qkKTorMGBUyy_sS-oMrYL_7G/view?usp=drive_link" }
+      ],
+      "Advance Web Development": [
+        { name: "Assignment 1", link: "https://drive.google.com/file/d/12XICBqP3V3fwCO3j9QI9KJ6A88k6T_SO/view?usp=drive_link" },
+        { name: "Assignment 2", link: "https://drive.google.com/file/d/11xQhZCTNgloF5b1Bgha0B1lDL7yxqTT5/view?usp=drive_link" }
+      ],
+      "Advance Database Management System": [
+        { name: "Assignment 1 & 2", link: "https://drive.google.com/file/d/173xvfJRolbfRxHDj2lf7buetnfqaqrG5/view?usp=drive_link" },
+        { name: "Assignment 3", link: "https://drive.google.com/file/d/1Jjqo-kjTDs0PsxCmGGbftfeVG4f1ld-T/view?usp=drive_link" },
+        { name: "Assignment 4", link: "https://drive.google.com/file/d/135xObZ_SczzsnPMD3nYyEVFw5aCrtJgS/view?usp=drive_link" }
+      ],
+      "Emerging Trends & Technologies": [
+        { name: "Assignment 1", link: "https://drive.google.com/file/d/15SCRCdv_FEBeLI5DMCctPy9rTybQjNrg/view?usp=drive_link" },
+        { name: "Assignment 2", link: "https://drive.google.com/file/d/1DejMs5Yhmjw36l8k6fR4UkDwTsl0Byq4/view?usp=drive_link" },
+        { name: "Assignment 3", link: "https://drive.google.com/file/d/1AIuGF7CMS5nRi5MEjZi0BO7HKjGpeRTS/view?usp=drive_link" },
+        { name: "Assignment 4", link: "https://drive.google.com/file/d/1fNtdnwROTLoEiYk1yBLeroDnn4LAlSc2/view?usp=drive_link" }
+      ],
+      "Management Infomation System": [
+        { name: "Assignment 1", link: "https://drive.google.com/file/d/1SsQqnxFsBTqJ4TAX7vUQImH5O8cYaUsr/view?usp=drive_link" }
+      ],
+      "Digital Marketing": [
+        { name: "Assignment 1 & 2", link: "https://drive.google.com/file/d/1fTSM7zOVaO3OrTazP_4JccpOfn4GsM8F/view?usp=drive_link" }
+      ]
+    };
 
-        const assignments = data[subject] || [];
-        const container = document.getElementById("assignment-list");
+    const assignments = data[subject] || [];
+    const container = document.getElementById("assignment-list");
 
-        if (assignments.length === 0) {
-            container.innerHTML = "<p>No assignments uploaded yet.</p>";
-        } else {
-            assignments.forEach(ass => {
-                container.innerHTML += `
-                    <div class="assignment">
-                        <p>${ass.name}</p>
-                        <a class="btn" href="${ass.link}" target="_blank">View</a>
-                        <a class="btn" href="${ass.link}" download>Download</a>
-                    </div>
-                `;
-            });
-        }
-    </script>
+    if (assignments.length === 0) {
+      container.innerHTML = "<p>No assignments uploaded yet.</p>";
+    } else {
+      assignments.forEach(ass => {
+        container.innerHTML += `
+          <div class="assignment">
+            <p>${ass.name}</p>
+            <a class="btn" href="${ass.link}" target="_blank">View</a>
+            <a class="btn" href="${ass.link}" download>Download</a>
+          </div>
+        `;
+      });
+    }
+  </script>
 </body>
 </html>
