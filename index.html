@@ -1,85 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignments</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-        }
-        header {
-            background: linear-gradient(45deg, #007bff, #6610f2);
-            color: white;
-            padding: 15px;
-            font-size: 24px;
-            overflow: hidden;
-            white-space: nowrap;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .marquee {
-            display: inline-block;
-            animation: marquee 10s linear infinite;
-        }
-        @keyframes marquee {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        h1 {
-            color: #333;
-        }
-        .subject {
-            display: block;
-            background: #007bff;
-            color: white;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: all 0.4s ease-in-out;
-            text-decoration: none;
-        }
-        .subject:hover {
-            background: #6610f2;
-            transform: scale(1.05);
-        }
-        footer {
-            margin-top: 20px;
-            padding: 15px;
-            background: #343a40;
-            color: white;
-            font-size: 16px;
-            border-radius: 0 0 10px 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignments</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header {
+      background: linear-gradient(45deg, #007bff, #6610f2);
+      color: white;
+      padding: 15px;
+      font-size: 24px;
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .marquee {
+      display: inline-block;
+      animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: slideUp 1s ease-out;
+    }
+
+    h1 {
+      color: #333;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .subject {
+      display: block;
+      background: #007bff;
+      color: white;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all 0.4s ease-in-out;
+      text-decoration: none;
+      animation: slideLeft 0.6s ease-out;
+    }
+
+    .subject:hover {
+      background: #6610f2;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 20px;
+      padding: 15px;
+      background: #343a40;
+      color: white;
+      font-size: 16px;
+      border-radius: 0 0 10px 10px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <span class="marquee">🚀 Welcome to Assignments Portal 🚀</span>
-    </header>
-    <div class="container">
-        <h1>📚 Subjects 📚</h1>
-        <a class="subject" href="subject.html?subject=Advance Python">1 Advance Python</a>
-        <a class="subject" href="subject.html?subject=Advance Web Development">2 Advance Web Development</a>
-        <a class="subject" href="subject.html?subject=Advance Database Management System">3 Advance Database Management System</a>
-        <a class="subject" href="subject.html?subject=Cyber Law & Security">4 Cyber Law & Security</a>
-        <a class="subject" href="subject.html?subject=Emerging Trends %26 Technologies">5 Emerging Trends & Technologies</a>
-        <a class="subject" href="subject.html?subject=Management Infomation System">6 Management Infomation System</a>
-        <a class="subject" href="subject.html?subject=Digital Marketing">7 Digital Marketing</a>
-    </div>
-    <footer>© 2025 Assignments | All rights reserved</footer>
+  <header>
+    <span class="marquee">🚀 Welcome to Assignments Portal 🚀</span>
+  </header>
+  <div class="container">
+    <h1>📚 Subjects 📚</h1>
+    <a class="subject" href="subject.html?subject=Advance Python">1 Advance Python</a>
+    <a class="subject" href="subject.html?subject=Advance Web Development">2 Advance Web Development</a>
+    <a class="subject" href="subject.html?subject=Advance Database Management System">3 Advance Database Management System</a>
+    <a class="subject" href="subject.html?subject=Cyber Law & Security">4 Cyber Law & Security</a>
+    <a class="subject" href="subject.html?subject=Emerging Trends %26 Technologies">5 Emerging Trends & Technologies</a>
+    <a class="subject" href="subject.html?subject=Management Infomation System">6 Management Infomation System</a>
+    <a class="subject" href="subject.html?subject=Digital Marketing">7 Digital Marketing</a>
+  </div>
+  <footer>© 2025 Assignments | All rights reserved</footer>
 </body>
 </html>
