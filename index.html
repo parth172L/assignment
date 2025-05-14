@@ -1,3 +1,4 @@
+<!-- Enhanced index.html with search + animation + smooth transitions -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,6 @@
       padding: 0;
       background-color: #f0f2f5;
       animation: fadeIn 1s ease-in;
-      transition: background-color 0.4s ease;
     }
 
     header {
@@ -23,7 +23,6 @@
       overflow: hidden;
       white-space: nowrap;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background 0.4s ease;
     }
 
     .marquee {
@@ -43,13 +42,22 @@
       background: white;
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      animation: slideUp 1s ease-out;
-      transition: background-color 0.4s ease;
     }
 
     h1 {
       color: #333;
-      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .search-box {
+      margin-bottom: 20px;
+    }
+
+    #searchInput {
+      padding: 10px;
+      width: 80%;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
     }
 
     .subject {
@@ -63,7 +71,24 @@
       font-size: 20px;
       transition: all 0.4s ease-in-out;
       text-decoration: none;
-      animation: slideLeft 0.6s ease-out;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: appear 0.5s ease-out forwards;
+    }
+
+    .subject:nth-child(n+1) { animation-delay: 0.1s; }
+    .subject:nth-child(n+2) { animation-delay: 0.2s; }
+    .subject:nth-child(n+3) { animation-delay: 0.3s; }
+    .subject:nth-child(n+4) { animation-delay: 0.4s; }
+    .subject:nth-child(n+5) { animation-delay: 0.5s; }
+    .subject:nth-child(n+6) { animation-delay: 0.6s; }
+    .subject:nth-child(n+7) { animation-delay: 0.7s; }
+
+    @keyframes appear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .subject:hover {
@@ -78,8 +103,6 @@
       color: white;
       font-size: 16px;
       border-radius: 0 0 10px 10px;
-      animation: fadeIn 2s ease-in;
-      transition: background-color 0.4s ease;
     }
 
     @keyframes fadeIn {
@@ -87,17 +110,6 @@
       to { opacity: 1; }
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideLeft {
-      from { transform: translateX(-100px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    /* Dark mode */
     body.dark {
       background-color: #121212;
       color: #ffffff;
@@ -108,7 +120,6 @@
       color: #ffffff !important;
     }
 
-    /* Toggle button */
     .toggle-dark {
       position: fixed;
       top: 80px;
@@ -140,16 +151,23 @@
   <header>
     <span class="marquee">🚀 Welcome to Assignments Portal 🚀</span>
   </header>
+
   <div class="container">
     <h1>📚 Subjects 📚</h1>
-    <a class="subject" href="subject.html?subject=Advance Python">1 Advance Python</a>
-    <a class="subject" href="subject.html?subject=Advance Web Development">2 Advance Web Development</a>
-    <a class="subject" href="subject.html?subject=Advance Database Management System">3 Advance Database Management System</a>
-    <a class="subject" href="subject.html?subject=Cyber Law & Security">4 Cyber Law & Security</a>
-    <a class="subject" href="subject.html?subject=Emerging Trends %26 Technologies">5 Emerging Trends & Technologies</a>
-    <a class="subject" href="subject.html?subject=Management Infomation System">6 Management Infomation System</a>
-    <a class="subject" href="subject.html?subject=Digital Marketing">7 Digital Marketing</a>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search subject...">
+    </div>
+    <div id="subjectList">
+      <a class="subject" href="subject.html?subject=Advance Python">1 Advance Python</a>
+      <a class="subject" href="subject.html?subject=Advance Web Development">2 Advance Web Development</a>
+      <a class="subject" href="subject.html?subject=Advance Database Management System">3 Advance Database Management System</a>
+      <a class="subject" href="subject.html?subject=Cyber Law & Security">4 Cyber Law & Security</a>
+      <a class="subject" href="subject.html?subject=Emerging Trends %26 Technologies">5 Emerging Trends & Technologies</a>
+      <a class="subject" href="subject.html?subject=Management Infomation System">6 Management Infomation System</a>
+      <a class="subject" href="subject.html?subject=Digital Marketing">7 Digital Marketing</a>
+    </div>
   </div>
+
   <footer>© 2025 Assignments | All rights reserved</footer>
 
   <script>
@@ -171,6 +189,16 @@
     window.addEventListener('DOMContentLoaded', () => {
       const savedMode = localStorage.getItem('darkMode') || 'light';
       applyDarkMode(savedMode);
+    });
+
+    // Live search
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+      const filter = this.value.toLowerCase();
+      const subjects = document.querySelectorAll('#subjectList .subject');
+      subjects.forEach(sub => {
+        const txt = sub.textContent.toLowerCase();
+        sub.style.display = txt.includes(filter) ? 'block' : 'none';
+      });
     });
   </script>
 </body>
