@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Assignments</title>
+  <style>
+    body {
+      font-family: Poppins, sans-serif;
+      text-align: center;
+      background: #f0f2f5;
+      animation: fadeIn 1s ease-in;
+      transition: background 0.4s ease;
+      margin: 0;
+      padding-top: 60px; /* space for fixed back button */
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: slideUp 1s ease-out;
+      transition: background 0.4s ease;
+    }
+
+    h1 {
+      color: #333;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .assignment {
+      margin: 20px 0;
+      padding: 15px;
+      background: #e9ecef;
+      border-radius: 10px;
+      animation: slideLeft 0.6s ease-in-out;
+    }
+
+    .assignment p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    a.btn {
+      margin: 5px;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    a.btn:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+
+    /* Improved back button style */
+    .back-button {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #007bff;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 1000;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .back-button svg {
+      width: 18px;
+      height: 18px;
+      fill: white;
+    }
+
+    /* Popup modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none; /* hidden by default */
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .modal {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      position: relative;
+      animation: slideUp 0.4s ease forwards;
+      text-align: left;
+    }
+
+    .modal.dark {
+      background: #1e1e1e;
+      color: #eee;
+    }
+
+    .modal-header {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 22px;
+      font-weight: bold;
+      border: none;
+      background: none;
+      color: #555;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: #000;
+    }
+
+    /* Dark mode for close button */
+    body.dark .modal-close {
+      color: #bbb;
+    }
+
+    body.dark .modal-close:hover {
+      color: #fff;
+    }
+
+    /* Dark mode toggle button */
+    .toggle-dark {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #f0f0f0;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.4s, transform 0.2s;
+      z-index: 999;
+    }
+
+    .toggle-dark:hover {
+      transform: scale(1.05);
+    }
+
+    body.dark .toggle-dark {
+      background: #333;
+      color: #fff;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    body.dark {
+      background: #121212;
+      color: #fff;
+    }
+
+    .container.dark {
+      background: #1e1e1e;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-dark" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+  <!-- Back button with left arrow SVG -->
+  <a href="index.html" class="back-button" title="Back to Subjects">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back
+  </a>
+
+  <div class="container">
+    <h1 id="subject-title">Assignments</h1>
+    <div id="assignment-list"></div>
+
+
+  <!-- Modal popup -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close popup">&times;</button>
+      <div class="modal-header">Important Info</div>
+      <div class="modal-content">
+        <p>Please make sure to complete the assignments on time.
+        For any issues, contact your instructor.
+        Click the assignment link to download and view your work.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function applyDarkMode(mode) {
+      const isDark = mode === 'dark';
+      document.body.classList.toggle('dark', isDark);
+      document.querySelectorAll('.container').forEach(el => {
+        el.classList.toggle('dark', isDark);
+      });
+      document.querySelectorAll('.modal').forEach(el => {
+        el.classList.toggle('dark', isDark);
+      });
+      document.querySelector('.toggle-dark').innerText = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+    }
+
+    function toggleDarkMode() {
+      const current = localStorage.getItem('darkMode') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('darkMode', current);
+      applyDarkMode(current);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedMode = localStorage.getItem('darkMode') || 'light';
+      applyDarkMode(savedMode);
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const subject = urlParams.get('subject');
+    document.getElementById("subject-title").innerText = subject + " Assignments";
+
+    const data = {
+      "Advance Python": [
+        { name: "Assignment 1", link: "https://drive.google.com/file/d/1Zpow5253qkKTorMGBUyy_sS-oMrYL_7G/view?usp=drive_link" }
+      ],
+      "Advance Web Development": [
+        { name: "Assignment 1", link: "https://drive.google.com/file/d/12XICBqP3V3fwCO3j9QI9KJ6A88k6T_SO/view?usp=drive_link" },
+        { name: "Assignment 2", link: "https://drive.google.com/file/d/11xQhZCTNgloF5b1Bgha0B1lDL7yxqTT5/view?usp=drive_link" },
+        { name: "Assignment 3", link: "https://drive.google.com/file/d/1sBTTqNdjzCo8Sd-9dPoPQd5978JIuZQp/view?usp=drive_link" },
+        { name: "Assignment 4", link: "https://drive.google.com/file/d/1JqfNtYXK_gcwr_mAY_tPT4ny-8fUJwuR/view?usp=drive_link" }
+      ],
+      "Advance Database Management System": [
+        { name: "Assignment 1 & 2", link: "https://drive.google.com/file/d/173xvfJRolbfRxHDj2lf7buetnfqaqrG5/view?usp=drive_link" },
+        { name: "Assignment 3", link: "https://drive.google.com/file/d/1Jjqo-kjTDs0PsxCmGGbftfeVG4f1ld-T/view?usp=drive_link" },
+        { name: "Assignment 4", link: "https://drive.google.com/file/d/135xObZ_SczzsnPMD3nYyEVFw5aCrtJgS/view?usp=drive_link" },
+        { name: "Assignment 5", link: "https://drive.google.com/file/d/1BCSXmVxXOMmbszQlTp2egmKpxNSzdIAp/view?usp=drive_link" }
+      ],
+      "Cyber Law & Security": [
+        { name: "Assignment All (1 to 5)", link: "https://drive.google.com/file/d/15LAfZwvfS98xVTP6UNn6RuLqOdkQIWMa/view?usp=drive_link" },
+      ],
+      "Emerging Trends & Technologies": [
+        { name: "Assignment 1", link: "https://drive.google.com/file/d/15SCRCdv_FEBeLI5DMCctPy9rTybQjNrg/view?usp=drive_link" },
+        { name: "Assignment 2", link: "https://drive.google.com/file/d/1DejMs5Yhmjw36l8k6fR4UkDwTsl0Byq4/view?usp=drive_link" },
+        { name: "Assignment 3", link: "https://drive.google.com/file/d/1AIuGF7CMS5nRi5MEjZi0BO7HKjGpeRTS/view?usp=drive_link" },
+        { name: "Assignment 4", link: "https://drive.google.com/file/d/1fNtdnwROTLoEiYk1yBLeroDnn4LAlSc2/view?usp=drive_link" },
+        { name: "Assignment 5", link: "https://drive.google.com/file/d/1Ax1a_6iSI6VXATsFGytgCb61i6T7L8kX/view?usp=drive_link" }
+      ],
+      "Management Infomation System": [
+        { name: "Assignment 1", link: "https://drive.google.com/file/d/1SsQqnxFsBTqJ4TAX7vUQImH5O8cYaUsr/view?usp=drive_link" },
+        { name: "Assignment 2", link: "https://drive.google.com/file/d/1HhYEv9tm0jEk4YrvS1XZItEHST5BIoCy/view?usp=drive_link" },
+        { name: "Assignment 3", link: "https://drive.google.com/file/d/1dbyH9HSeqPD8yrB81uMBM6v-C8JH7jXQ/view?usp=drive_link" },
+        { name: "Assignment 4 & 5", link: "https://drive.google.com/file/d/1Ft_a3DDbu87R_DJZx0Wydv-brU7S6FZc/view?usp=drive_link" }
+      ],
+      "Digital Marketing": [
+        { name: "Assignment 1 & 2", link: "https://drive.google.com/file/d/1fTSM7zOVaO3OrTazP_4JccpOfn4GsM8F/view?usp=drive_link" }
+      ]
+    };
+
+    const assignmentList = document.getElementById("assignment-list");
+    if (subject && data[subject]) {
+      data[subject].forEach(assignment => {
+        const div = document.createElement("div");
+        div.className = "assignment";
+        div.innerHTML = `
+          <p>${assignment.name}</p>
+          <a href="${assignment.link}" target="_blank" class="btn" rel="noopener">Open Assignment</a>
+        `;
+        assignmentList.appendChild(div);
+      });
+    } else {
+      assignmentList.innerHTML = "<p>No assignments found for this subject.</p>";
+    }
+
+    // Popup control
+    const modalOverlay = document.getElementById('modal-overlay');
+
+    function openModal() {
+      modalOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // prevent background scroll
+    }
+
+    function closeModal() {
+      modalOverlay.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside modal box
+    modalOverlay.addEventListener('click', e => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
