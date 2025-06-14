@@ -1,287 +1,336 @@
 <!-- Enhanced index.html with search + animation + smooth transitions -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assignments</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f2f5;
-      animation: fadeIn 1s ease-in;
-    }
-
-    header {
-      background: linear-gradient(45deg, #007bff, #6610f2);
-      color: white;
-      padding: 15px;
-      font-size: 24px;
-      overflow: hidden;
-      white-space: nowrap;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .marquee {
-      display: inline-block;
-      animation: marquee 10s linear infinite;
-    }
-
-    @keyframes marquee {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    h1 {
-      color: #333;
-    }
-
-    .search-box {
-      margin-bottom: 20px;
-    }
-
-    #searchInput {
-      padding: 10px;
-      width: 80%;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    .subject {
-      display: block;
-      background: #007bff;
-      color: white;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 20px;
-      transition: all 0.4s ease-in-out;
-      text-decoration: none;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: appear 0.5s ease-out forwards;
-    }
-
-    .subject:nth-child(n+1) { animation-delay: 0.1s; }
-    .subject:nth-child(n+2) { animation-delay: 0.2s; }
-    .subject:nth-child(n+3) { animation-delay: 0.3s; }
-    .subject:nth-child(n+4) { animation-delay: 0.4s; }
-    .subject:nth-child(n+5) { animation-delay: 0.5s; }
-    .subject:nth-child(n+6) { animation-delay: 0.6s; }
-    .subject:nth-child(n+7) { animation-delay: 0.7s; }
-
-    @keyframes appear {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignments</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #6777d5, #9ffcee, #6ce0fc, #8b7bff);
+        background-size: 400% 400%;
+        animation: gradientFlow 15s ease infinite, fadeIn 1s ease-in;
       }
-    }
 
-    .subject:hover {
-      background: #6610f2;
-      transform: scale(1.05);
-    }
+      header {
+        background: linear-gradient(45deg, #007bff, #6610f2);
+        color: white;
+        padding: 15px;
+        font-size: 24px;
+        overflow: hidden;
+        white-space: nowrap;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
 
-    footer {
-      margin-top: 20px;
-      padding: 15px;
-      background: #343a40;
-      color: white;
-      font-size: 16px;
-      border-radius: 0 0 10px 10px;
-    }
+      .marquee {
+        display: inline-block;
+        animation: marquee 10s linear infinite;
+      }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+      @keyframes marquee {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
 
-    body.dark {
-      background-color: #121212;
-      color: #ffffff;
-    }
+      .container {
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
 
-    .container.dark, header.dark, footer.dark {
-      background-color: #1e1e1e !important;
-      color: #ffffff !important;
-    }
+      h1 {
+        color: #333;
+      }
 
-    .toggle-dark {
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      background: #f0f0f0;
-      border: none;
-      padding: 10px 16px;
-      font-size: 16px;
-      border-radius: 25px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: background 0.4s, transform 0.2s;
-      z-index: 999;
-    }
+      .search-box {
+        margin-bottom: 20px;
+      }
 
-    .toggle-dark:hover {
-      transform: scale(1.05);
-    }
+      #searchInput {
+        padding: 10px;
+        width: 80%;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+      }
 
-    body.dark .toggle-dark {
-      background: #333;
-      color: #fff;
-    }
-  </style>
-</head>
-<body>
-  <button class="toggle-dark" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+      .subject {
+        display: block;
+        background: #007bff;
+        color: white;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: all 0.4s ease-in-out;
+        text-decoration: none;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: appear 0.5s ease-out forwards;
+      }
 
-  <header>
-    <span class="marquee">🚀 Welcome to Assignments Portal 🚀</span>
-  </header>
+      .subject:nth-child(n + 1) {
+        animation-delay: 0.1s;
+      }
+      .subject:nth-child(n + 2) {
+        animation-delay: 0.2s;
+      }
+      .subject:nth-child(n + 3) {
+        animation-delay: 0.3s;
+      }
+      .subject:nth-child(n + 4) {
+        animation-delay: 0.4s;
+      }
+      .subject:nth-child(n + 5) {
+        animation-delay: 0.5s;
+      }
+      .subject:nth-child(n + 6) {
+        animation-delay: 0.6s;
+      }
+      .subject:nth-child(n + 7) {
+        animation-delay: 0.7s;
+      }
 
-  <div class="container">
-    <h1>📚 Subjects 📚</h1>
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search subject...">
+      @keyframes appear {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .subject:hover {
+        background: #6610f2;
+        transform: scale(1.05);
+      }
+
+      footer {
+        margin-top: 20px;
+        padding: 15px;
+        background: #343a40;
+        color: white;
+        font-size: 16px;
+        border-radius: 0 0 10px 10px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      body.dark {
+        background-color: #121212;
+        color: #ffffff;
+      }
+
+      .container.dark,
+      header.dark,
+      footer.dark {
+        background-color: #1e1e1e !important;
+        color: #ffffff !important;
+      }
+
+      .toggle-dark {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: #f0f0f0;
+        border: none;
+        padding: 10px 16px;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background 0.4s, transform 0.2s;
+        z-index: 999;
+      }
+
+      .toggle-dark:hover {
+        transform: scale(1.05);
+      }
+
+      body.dark .toggle-dark {
+        background: #333;
+        color: #fff;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <button class="toggle-dark" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+    <div class="container">
+      <h1 class="typing-text">📚 Subjects 📚</h1>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search subject..." />
+      </div>
+      <div id="subjectList">
+        <a class="subject" href="subject.html?subject=Advance Python"
+          >1 Advance Python</a
+        >
+        <a class="subject" href="subject.html?subject=Advance Web Development"
+          >2 Advance Web Development</a
+        >
+        <a
+          class="subject"
+          href="subject.html?subject=Advance Database Management System"
+          >3 Advance Database Management System</a
+        >
+        <a class="subject" href="subject.html?subject=Cyber Law %26 Security"
+          >4 Cyber Law & Security</a
+        >
+        <a
+          class="subject"
+          href="subject.html?subject=Emerging Trends %26 Technologies"
+          >5 Emerging Trends & Technologies</a
+        >
+        <a
+          class="subject"
+          href="subject.html?subject=Management Infomation System"
+          >6 Management Infomation System</a
+        >
+        <a class="subject" href="subject.html?subject=Digital Marketing"
+          >7 Digital Marketing</a
+        >
+      </div>
     </div>
-    <div id="subjectList">
-      <a class="subject" href="subject.html?subject=Advance Python">1 Advance Python</a>
-      <a class="subject" href="subject.html?subject=Advance Web Development">2 Advance Web Development</a>
-      <a class="subject" href="subject.html?subject=Advance Database Management System">3 Advance Database Management System</a>
-      <a class="subject" href="subject.html?subject=Cyber Law %26 Security">4 Cyber Law & Security</a>
-      <a class="subject" href="subject.html?subject=Emerging Trends %26 Technologies">5 Emerging Trends & Technologies</a>
-      <a class="subject" href="subject.html?subject=Management Infomation System">6 Management Infomation System</a>
-      <a class="subject" href="subject.html?subject=Digital Marketing">7 Digital Marketing</a>
+
+    <footer>© 2025 Assignments | All rights reserved</footer>
+
+    <script>
+      function applyDarkMode(mode) {
+        const isDark = mode === "dark";
+        document.body.classList.toggle("dark", isDark);
+        document
+          .querySelectorAll(".container, header, footer")
+          .forEach((el) => {
+            el.classList.toggle("dark", isDark);
+          });
+        document.querySelector(".toggle-dark").innerText = isDark
+          ? "☀️ Light Mode"
+          : "🌙 Dark Mode";
+      }
+
+      function toggleDarkMode() {
+        const current =
+          localStorage.getItem("darkMode") === "dark" ? "light" : "dark";
+        localStorage.setItem("darkMode", current);
+        applyDarkMode(current);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const savedMode = localStorage.getItem("darkMode") || "light";
+        applyDarkMode(savedMode);
+      });
+
+      // Live search
+      document
+        .getElementById("searchInput")
+        .addEventListener("keyup", function () {
+          const filter = this.value.toLowerCase();
+          const subjects = document.querySelectorAll("#subjectList .subject");
+          subjects.forEach((sub) => {
+            const txt = sub.textContent.toLowerCase();
+            sub.style.display = txt.includes(filter) ? "block" : "none";
+          });
+        });
+    </script>
+
+    <!-- Popup Message -->
+    <div id="popup" class="popup show">
+      <div class="popup-content">
+        <p>📝 AWD Assignment-4 Added!</p>
+        <button onclick="closePopup()">OK</button>
+      </div>
     </div>
-  </div>
 
-  <footer>© 2025 Assignments | All rights reserved</footer>
+    <!-- Popup CSS -->
+    <style>
+      .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        transform: scale(1.1);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
 
-  <script>
-    function applyDarkMode(mode) {
-      const isDark = mode === 'dark';
-      document.body.classList.toggle('dark', isDark);
-      document.querySelectorAll('.container, header, footer').forEach(el => {
-        el.classList.toggle('dark', isDark);
-      });
-      document.querySelector('.toggle-dark').innerText = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
-    }
+      .popup.show {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+      }
 
-    function toggleDarkMode() {
-      const current = localStorage.getItem('darkMode') === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('darkMode', current);
-      applyDarkMode(current);
-    }
+      .popup-content {
+        background: white;
+        padding: 20px 30px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        animation: popIn 0.4s ease;
+      }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedMode = localStorage.getItem('darkMode') || 'light';
-      applyDarkMode(savedMode);
-    });
+      .popup-content p {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
 
-    // Live search
-    document.getElementById('searchInput').addEventListener('keyup', function() {
-      const filter = this.value.toLowerCase();
-      const subjects = document.querySelectorAll('#subjectList .subject');
-      subjects.forEach(sub => {
-        const txt = sub.textContent.toLowerCase();
-        sub.style.display = txt.includes(filter) ? 'block' : 'none';
-      });
-    });
-  </script>
+      .popup-content button {
+        padding: 6px 14px;
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
 
-<!-- Popup Message -->
-<div id="popup" class="popup show">
-  <div class="popup-content">
-    <p>📝 AWD Assignment-4 Added!</p>
-    <button onclick="closePopup()">OK</button>
-  </div>
-</div>
+      .popup-content button:hover {
+        background-color: #1976d2;
+      }
 
-<!-- Popup CSS -->
-<style>
-  .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    opacity: 0;
-    transform: scale(1.1);
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
+      @keyframes popIn {
+        0% {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
 
-  .popup.show {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: auto;
-  }
-
-  .popup-content {
-    background: white;
-    padding: 20px 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    animation: popIn 0.4s ease;
-  }
-
-  .popup-content p {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .popup-content button {
-    padding: 6px 14px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-
-  .popup-content button:hover {
-    background-color: #1976D2;
-  }
-
-  @keyframes popIn {
-    0% {
-      transform: scale(0.9);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-</style>
-
-<!-- Popup JS -->
-<script>
-  function closePopup() {
-    const popup = document.getElementById("popup");
-    popup.classList.remove("show");
-  }
-</script>
-
-</body>
+    <!-- Popup JS -->
+    <script>
+      function closePopup() {
+        const popup = document.getElementById("popup");
+        popup.classList.remove("show");
+      }
+    </script>
+  </body>
 </html>
