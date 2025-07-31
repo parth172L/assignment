@@ -59,11 +59,11 @@
 
       <select name="subject" id="subject" required onchange="updateUnits()">
         <option value="" disabled selected>Select Subject</option>
-        <option value="Python">Python</option>
-        <option value="Java">Java</option>
-        <option value="OS">OS</option>
-        <option value="Data Science">Data Science</option>
-        <option value="Networking">Networking</option>
+        <option value="Software Engineering - 1">Software Engineering - 1</option>
+        <option value="NoSQL Database">NoSQL Database</option>
+        <option value="Introduction to Internet of Things (IoT)">Introduction to Internet of Things (IoT)</option>
+        <option value="Analysis of Algorithms">Analysis of Algorithms</option>
+        <option value="Internet & Unified Communication Management">Internet & Unified Communication Management</option>
       </select>
 
       <select name="unit" id="unit" required>
@@ -82,11 +82,11 @@
 
   <script>
     const unitOptions = {
-      "Python": [1, 2, 3],
-      "Java": [1, 2],
-      "OS": [1, 2, 3, 4],
-      "Data Science": [1, 2],
-      "Networking": [1, 2, 3, 4, 5]
+      ">Software Engineering - 1": [1, 2],
+      "NoSQL Database": [1, 2],
+      "Introduction to Internet of Things (IoT)": [1, 2],
+      "Analysis of Algorithms": [1, 2],
+      "Internet & Unified Communication Management": [1, 2]
     };
 
     function updateUnits() {
