@@ -27,7 +27,7 @@
       margin-bottom: 20px;
       color: #333;
     }
-    input, textarea {
+    input, select {
       width: 100%;
       padding: 12px;
       margin-bottom: 15px;
@@ -53,12 +53,59 @@
 <body>
   <div class="form-container">
     <h2>Contact Me</h2>
-    <form action="https://formsubmit.co/pg1921728@gmail.com" method="POST">
-      <input type="email" name="email" placeholder="Your Gmail ID" required>
-      <input type="mane" name="name" placeholder="Your Name" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+    <form id="issueForm" action="https://formsubmit.co/pg1921728@gmail.com" method="POST">
+      <input type="email" name="email" placeholder="Your Gmail ID" id="email" required>
+      <input type="text" name="name" placeholder="Your Name" id="name" required>
+
+      <select name="subject" id="subject" required onchange="updateUnits()">
+        <option value="" disabled selected>Select Subject</option>
+        <option value="Python">Python</option>
+        <option value="Java">Java</option>
+        <option value="OS">OS</option>
+        <option value="Data Science">Data Science</option>
+        <option value="Networking">Networking</option>
+      </select>
+
+      <select name="unit" id="unit" required>
+        <option value="" disabled selected>Select Unit</option>
+      </select>
+
+      <select name="issue" id="issue" required>
+        <option value="" disabled selected>Select Issue</option>
+        <option value="PDF not show">PDF not show</option>
+        <option value="PDF not download">PDF not download</option>
+      </select>
+
+      <button type="submit" id="submitBtn">Send</button>
     </form>
   </div>
+
+  <script>
+    const unitOptions = {
+      "Python": [1, 2, 3],
+      "Java": [1, 2],
+      "OS": [1, 2, 3, 4],
+      "Data Science": [1, 2],
+      "Networking": [1, 2, 3, 4, 5]
+    };
+
+    function updateUnits() {
+      const subject = document.getElementById("subject").value;
+      const unitSelect = document.getElementById("unit");
+
+      // Clear current units
+      unitSelect.innerHTML = '<option value="" disabled selected>Select Unit</option>';
+
+      // Add new units
+      if (unitOptions[subject]) {
+        unitOptions[subject].forEach(unit => {
+          const option = document.createElement("option");
+          option.value = `Unit ${unit}`;
+          option.textContent = `Unit ${unit}`;
+          unitSelect.appendChild(option);
+        });
+      }
+    }
+  </script>
 </body>
 </html>
